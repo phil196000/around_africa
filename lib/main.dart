@@ -1,3 +1,4 @@
+import 'package:around_africa/screens/onboarding/onboarding.dart';
 import 'package:around_africa/screens/splash/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Splash(),
+      home: Onboarding(),
     );
   }
 }
