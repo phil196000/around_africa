@@ -1,5 +1,5 @@
 import 'package:around_africa/customised_widgets/buttons/primarybutton.dart';
-import 'package:around_africa/customised_widgets/texts/around_africa.dart';
+import 'package:around_africa/customised_widgets/texts/whitetext.dart';
 import 'package:around_africa/screens/home/home.dart';
 import 'package:around_africa/theme/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';

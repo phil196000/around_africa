@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:around_africa/customised_widgets/texts/around_africa.dart';
+import 'package:around_africa/customised_widgets/texts/whitetext.dart';
 import 'package:around_africa/theme/colors.dart';
 import 'package:flutter/material.dart';
 

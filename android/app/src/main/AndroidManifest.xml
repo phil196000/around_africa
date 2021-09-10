@@ -3,6 +3,8 @@
    <application
         android:label="around_africa"
         android:icon="@mipmap/ic_launcher">
+               <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyD8qYHhnRdpYdD9jFIQemp56pz5LzEh7h0"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
