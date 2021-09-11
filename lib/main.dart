@@ -1,3 +1,6 @@
+import 'package:around_africa/redux/appstate.dart';
+import 'package:around_africa/redux/middlewares/fetchitems.dart';
+import 'package:around_africa/redux/reducer.dart';
 import 'package:around_africa/screens/about/about.dart';
 import 'package:around_africa/screens/details/details.dart';
 import 'package:around_africa/screens/details/map.dart';
@@ -7,8 +10,17 @@ import 'package:around_africa/screens/qrcode/qrcode.dart';
 import 'package:around_africa/screens/splash/splash.dart';
 import 'package:around_africa/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:redux/redux.dart';
 
+GetIt getIt = GetIt.instance;
 void main() {
+  final Store<AppState> store = new Store(
+    appStateReducer,
+    middleware: [fetchItems],
+    initialState: new AppState(),
+  );
+  getIt.registerSingleton<Store<AppState>>(store, signalsReady: true);
   runApp(MyApp());
 }
 
