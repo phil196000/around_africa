@@ -43,17 +43,32 @@ class _AboutState extends State<About> {
                 flex: 3,
                 child: Container(
                   color: CustomColors.ash,
-                  child: Center(
-                    child: BlackText(text: 'Image'),
+                  child: Image.network(
+                    "https://via.placeholder.com/600/372c93",
+                    fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
                   ),
                 )),
             Expanded(
                 flex: 3,
                 child: SingleChildScrollView(
                   child: Container(
+                    margin: EdgeInsets.only(top: 15),
                     child: BlackText(
                       text:
-                          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
+                          'AROUND AFRICA is a tourism application which allows users to visit tourist spots across Ghana. In these places, QRCODEs will be made available to allow visitors to have more information on these places.',
                     ),
                   ),
                 ))
