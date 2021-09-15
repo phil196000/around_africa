@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:around_africa/customised_widgets/texts/whitetext.dart';
+import 'package:around_africa/screens/onboarding/onboarding.dart';
 import 'package:around_africa/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -35,6 +36,12 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
 
-    Timer(Duration(milliseconds: 3000), () {});
+    Timer(Duration(milliseconds: 3000), () {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Onboarding(),
+          ));
+    });
   }
 }

@@ -1,10 +1,12 @@
 import 'package:around_africa/customised_widgets/texts/blacktext.dart';
-import 'package:around_africa/theme/colors.dart';
+import 'package:around_africa/data/item.dart';
+import 'package:around_africa/data/touristspot.dart';
+import 'package:around_africa/screens/details/details.dart';
 import 'package:flutter/material.dart';
 
 class Item extends StatelessWidget {
-  const Item({Key? key}) : super(key: key);
-
+  const Item({Key? key, required this.spot}) : super(key: key);
+  final TouristSpot spot;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,18 +14,44 @@ class Item extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Details(
+                      spot: spot,
+                    ),
+                  ));
+            },
             leading: Container(
               width: 70,
               height: 100,
-              color: CustomColors.primary,
+              child: Image.network(
+                spot.thumbnail_url.toString(),
+                fit: BoxFit.fitWidth,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  );
+                },
+              ),
             ),
             title: BlackText(
-              text: 'Title 1',
+              text: spot.name.toString(),
             ),
             subtitle: BlackText(
-              weight: FontWeight.normal,
-              text: 'Lorem Ipsum is simply',
-            ),
+                weight: FontWeight.normal,
+                text: spot.short_description!.length > 50
+                    ? spot.short_description!.substring(0, 50) + '...'
+                    : spot.short_description!),
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 2),

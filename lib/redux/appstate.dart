@@ -1,6 +1,8 @@
 import 'package:around_africa/data/item.dart';
+import 'package:around_africa/data/touristspot.dart';
 
 class AppState {
-  final List<ItemModel> items;
-  AppState({this.items = const []});
+  final List<TouristSpot> spots;
+  final String? selected;
+  AppState({this.spots = const [], this.selected});
 }

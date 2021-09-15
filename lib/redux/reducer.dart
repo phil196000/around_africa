@@ -1,9 +1,11 @@
 import 'package:around_africa/redux/actions/itemsaction.dart';
+import 'package:around_africa/redux/actions/selectedtab.dart';
 
 import 'appstate.dart';
 
 AppState appStateReducer(AppState state, action) {
   return AppState(
-      items: action is GetItemsActionSuccess ? action.items : state.items);
+      spots: state.spots,
+      selected: action is SetSelectedDrawer ? action.selected : state.selected);
   // return state;
 }

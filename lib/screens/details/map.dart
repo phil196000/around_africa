@@ -1,12 +1,15 @@
 import 'dart:developer';
+import 'package:around_africa/data/touristspot.dart';
 import 'package:around_africa/navigation/appbar.dart';
 import 'package:around_africa/navigation/drawer.dart';
+import 'package:around_africa/screens/details/urllaunch.dart';
 import 'package:flutter/material.dart';
 import 'package:around_africa/navigation/bottomButtons.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Map extends StatefulWidget {
-  const Map({Key? key}) : super(key: key);
+  const Map({Key? key, required this.spot}) : super(key: key);
+  final TouristSpot spot;
 
   @override
   _MapState createState() => _MapState();
@@ -45,12 +48,26 @@ class _MapState extends State<Map> {
               mapType: MapType.normal,
               onCameraMove: (position) {},
 
-              markers: <Marker>{},
+              markers: <Marker>{
+                Marker(
+                    markerId: MarkerId(widget.spot.id.toString()),
+                    infoWindow: InfoWindow(title: widget.spot.name),
+                    position: LatLng(
+                      widget.spot.location!['lat'],
+                      widget.spot.location!['long'],
+                    ))
+              },
 
               initialCameraPosition: _currentPostion,
               onMapCreated: (GoogleMapController controller) {
                 // _controller.complete(controller);
                 _controller = controller;
+                controller.animateCamera(CameraUpdate.newLatLngZoom(
+                    LatLng(
+                      widget.spot.location!['lat'],
+                      widget.spot.location!['long'],
+                    ),
+                    17.5));
               },
             ),
           )
@@ -58,10 +75,23 @@ class _MapState extends State<Map> {
       ),
       persistentFooterButtons: [
         BottomButtons(
-          emailPressed: () {},
-          phonePressed: () {},
+          emailPressed: () {
+            launchUrl(url: 'mailto:${widget.spot.email}');
+          },
+          phonePressed: () {
+            launchUrl(url: "tel:" + widget.spot.phone_number!);
+          },
         )
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    if (_controller != null) {
+      _controller!.dispose();
+    }
+    // TODO: implement dispose
+    super.dispose();
   }
 }

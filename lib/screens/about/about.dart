@@ -1,15 +1,10 @@
 import 'dart:developer';
-
-import 'package:around_africa/customised_widgets/buttons/primarybutton.dart';
 import 'package:around_africa/customised_widgets/texts/blacktext.dart';
 import 'package:around_africa/navigation/appbar.dart';
 import 'package:around_africa/navigation/drawer.dart';
-
 import 'package:around_africa/theme/colors.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:around_africa/navigation/bottomButtons.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
@@ -19,13 +14,6 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
-  GoogleMapController? _controller;
-  CameraPosition _currentPostion = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 5.4746,
-  );
-  bool locationServices = false;
-  CameraPosition? centerPosition;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
