@@ -28,7 +28,7 @@ class _QrCodeSheetState extends State<QrCodeSheet> {
                 }
                 return Center(
                   child: CircularProgressIndicator(
-                    color: Colors.red,
+                    valueColor: AlwaysStoppedAnimation(Colors.red),
                     value: loadingProgress.expectedTotalBytes != null
                         ? loadingProgress.cumulativeBytesLoaded /
                             loadingProgress.expectedTotalBytes!
