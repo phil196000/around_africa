@@ -14,7 +14,7 @@ void main() {
   final Store<AppState> store = new Store(
     appStateReducer,
     middleware: [],
-    initialState: new AppState(spots: touristspots, selected: 'home'),
+    initialState: new AppState(spots: touristspots, selected: 'Location'),
   );
   getIt.registerSingleton<Store<AppState>>(store, signalsReady: true);
   runApp(MyApp(

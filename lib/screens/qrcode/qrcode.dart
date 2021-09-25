@@ -46,7 +46,6 @@ class _QrCodeState extends State<QrCode> {
       appBar: CustomAppBar(
         context: context,
         onPressed: (BuildContext context) {
-          log('Custom App bar pressed');
           Scaffold.of(context).openDrawer();
         },
       ),

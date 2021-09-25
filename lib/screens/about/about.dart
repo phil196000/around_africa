@@ -22,7 +22,6 @@ class _AboutState extends State<About> {
       appBar: CustomAppBar(
         context: context,
         onPressed: (BuildContext context) {
-          log('Custom App bar pressed');
           Scaffold.of(context).openDrawer();
         },
       ),
